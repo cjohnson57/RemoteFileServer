@@ -23,6 +23,8 @@ using namespace std;
 * Common Functions
 */
 
+string IP = ""; //IP Address, set at beginning of main from IPAddress.txt
+
 //Make socket connection, send message, get response
 string SendAndGetResponse(string message)
 {
@@ -32,7 +34,7 @@ string SendAndGetResponse(string message)
     sock = socket(AF_INET, SOCK_STREAM, 0);
     serv_addr.sin_family = AF_INET; 
     serv_addr.sin_port = htons(PORT);
-    inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr);
+    inet_pton(AF_INET, IP.c_str(), &serv_addr.sin_addr);
     if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) 
     { 
         cout << "Connection to server failed, program aborting." << endl; 
@@ -229,7 +231,7 @@ int AdminMenu()
     {
         cout << endl;
         cout << "1: List All Users" << endl;
-        cout << "2: List Specified User and Files" << endl;
+        cout << "2: List Files Owned by Specified User" << endl;
         cout << "3: Create User" << endl;
         cout << "4: Delete User" << endl;
         cout << "5: List All Files" << endl;
@@ -302,6 +304,11 @@ string EnterFile()
 
 int main()
 {
+    //Get IP address from file
+    ifstream IPFile;
+    IPFile.open("IPAddress.txt");
+    IPFile >> IP;
+    IPFile.close();
     //Sign in
     cout << "Please enter your username: ";
     string username;
