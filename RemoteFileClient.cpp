@@ -63,7 +63,7 @@ bool connect(string username)
     string arg1 = username;
     arg1.append(32 - arg1.length(), '\0');
 
-	string message = function + arg1;
+    string message = function + arg1;
     return SendAndGetResponse(message) == "true";
 }
 
@@ -74,7 +74,7 @@ string GetUserAndFiles(string username)
     string arg1 = username;
     arg1.append(32 - arg1.length(), '\0');
 
-	string message = function + arg1;
+    string message = function + arg1;
     return SendAndGetResponse(message);
 }
 
@@ -87,7 +87,7 @@ string ListAllUsers()
     string function = "GetUsers";
     function.append(32 - function.length(), '\0');
 
-	string message = function;
+    string message = function;
     return SendAndGetResponse(message);
 }
 
@@ -98,7 +98,7 @@ bool CreateUser(string username)
     string arg1 = username;
     arg1.append(32 - arg1.length(), '\0');
 
-	string message = function + arg1;
+    string message = function + arg1;
     return SendAndGetResponse(message) == "true";
 }
 
@@ -109,7 +109,7 @@ bool DeleteUser(string username)
     string arg1 = username;
     arg1.append(32 - arg1.length(), '\0');
 
-	string message = function + arg1;
+    string message = function + arg1;
     return SendAndGetResponse(message) == "true";
 }
 
@@ -118,7 +118,7 @@ string ListAllFiles()
     string function = "ListFiles";
     function.append(32 - function.length(), '\0');
 
-	string message = function;
+    string message = function;
     string response = SendAndGetResponse(message);
     return response;
 }
@@ -130,7 +130,7 @@ string PrintFile(string filename)
     string arg1 = filename;
     arg1.append(32 - arg1.length(), '\0');
 
-	string message = function + arg1;
+    string message = function + arg1;
     return SendAndGetResponse(message);
 }
 
@@ -141,7 +141,7 @@ bool DeleteFile(string filename)
     string arg1 = filename;
     arg1.append(32 - arg1.length(), '\0');
 
-	string message = function + arg1;
+    string message = function + arg1;
     return SendAndGetResponse(message) == "true";
 }
 
@@ -154,7 +154,7 @@ bool ChangeOwner(string filename, string newowner)
     string arg2 = newowner;
     arg2.append(32 - arg2.length(), '\0');
 
-	string message = function + arg1 + arg2;
+    string message = function + arg1 + arg2;
     return SendAndGetResponse(message) == "true";
 }
 
@@ -175,7 +175,7 @@ bool UploadFile(string filecontents, string filename, string username)
     arg3.append(32 - arg3.length(), '\0');
     string arg4 = filecontents;
 
-	string message = function + arg1 + arg2 + arg3 + arg4;
+    string message = function + arg1 + arg2 + arg3 + arg4;
     return SendAndGetResponse(message) == "true";
 }
 
@@ -188,7 +188,7 @@ string DownloadFile(string filename, string username)
     string arg2 = username;
     arg2.append(32 - arg2.length(), '\0');
 
-	string message = function + arg1 + arg2;
+    string message = function + arg1 + arg2;
     return SendAndGetResponse(message);
 }
 
@@ -201,7 +201,7 @@ bool DeleteOwnedFile(string filename, string username)
     string arg2 = username;
     arg2.append(32 - arg2.length(), '\0');
 
-	string message = function + arg1 + arg2;
+    string message = function + arg1 + arg2;
     return SendAndGetResponse(message) == "true";
 }
 
@@ -216,7 +216,7 @@ bool TransferOwner(string filename, string originalowner, string newowner)
     string arg3 = newowner;
     arg3.append(32 - arg3.length(), '\0');
 
-	string message = function + arg1 + arg2 + arg3;
+    string message = function + arg1 + arg2 + arg3;
     return SendAndGetResponse(message) == "true";
 }
 
